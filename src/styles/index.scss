@@ -1,0 +1,165 @@
+// import google fonts
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap");
+
+// reset css
+*,
+::before,
+::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+// Re-usable css
+// primary colors
+$Blue: hsl(246, 80%, 60%);
+
+$Ligh-red-work: hsl(15, 100%, 70%);
+$Soft-blue-play: hsl(195, 74%, 62%);
+$Light-red-study: hsl(348, 100%, 68%);
+$Lime-green-exercise: hsl(145, 58%, 55%);
+$Violet-social: hsl(264, 64%, 52%);
+$Soft-orange-self-care: hsl(43, 84%, 65%);
+
+// Neutral
+
+$Very-dark-blue: hsl(226, 43%, 10%);
+$Dark-blue: hsl(235, 46%, 20%);
+$Desaturated-blue: hsl(235, 45%, 61%);
+$Pale-Blue: hsl(236, 100%, 87%);
+
+// font weights
+
+$font-weights: (
+	"light": 300,
+	"medium": 400,
+	"bold": 500,
+);
+
+// reusable snippets
+$padding: 1.5rem;
+
+// mixins
+@mixin flexDirection($direction, $justify) {
+	display: flex;
+	flex-direction: $direction;
+	justify-content: $justify;
+	align-items: center;
+}
+body {
+	margin: 0;
+	font-size: 18px;
+	font-family: Rubik, sans-serif;
+	background: $Very-dark-blue;
+	padding: 4rem 1rem;
+}
+
+//Header component
+.header {
+	border-radius: 10px;
+	background: $Dark-blue;
+	margin-bottom: 2rem;
+}
+
+.top-header {
+	background: $Blue;
+	border-radius: 10px;
+	padding: $padding;
+	padding-top: 2rem;
+	@include flexDirection(row, flex-start);
+
+	img {
+		width: 50px;
+		height: 50px;
+		border: 2px solid $Pale-Blue;
+		border-radius: 50%;
+	}
+}
+
+.name-info {
+	margin-left: 1rem;
+	color: $Pale-Blue;
+	h6 {
+		font-weight: map-get($font-weights, medium);
+	}
+}
+
+.lower-header {
+	border-radius: 0 0 10px 10px;
+	@include flexDirection(row, space-between);
+	padding: $padding;
+	p {
+		color: $Pale-Blue;
+		opacity: 0.5;
+		transition: opacity 0.3s ease-out;
+		&:hover {
+			opacity: 1;
+		}
+	}
+}
+
+// Tracker component
+.tracker {
+	border-radius: 10px;
+	padding-top: 40px;
+	margin-bottom: 2rem;
+	position: relative;
+	z-index: -20;
+	overflow: hidden;
+}
+
+// adds different background color to each dasboard component
+.work {
+	background-color: $Ligh-red-work;
+}
+.play {
+	background-color: $Soft-blue-play;
+}
+.study {
+	background-color: $Light-red-study;
+}
+.exercise {
+	background-color: $Lime-green-exercise;
+}
+.social {
+	background-color: $Violet-social;
+}
+.self-care {
+	background-color: $Soft-orange-self-care;
+}
+
+.work-img {
+	position: absolute;
+	width: 70px;
+	height: 70px;
+	z-index: -10;
+	top: -10px;
+	right: 1rem;
+}
+.activity {
+	background: $Dark-blue;
+	border-radius: 10px;
+	padding: $padding;
+	position: relative;
+	top: 1.5px;
+	z-index: 2;
+}
+.activity-type {
+	@include flexDirection(row, space-between);
+	margin-bottom: 1rem;
+	h5 {
+		color: #ffffff;
+		font-weight: map-get($font-weights, medium);
+	}
+}
+.activity-stats {
+	@include flexDirection(row, space-between);
+	.current {
+		color: #ffffff;
+		font-size: 2rem;
+		font-weight: map-get($font-weights, light);
+	}
+	p {
+		color: $Pale-Blue;
+	}
+}
